@@ -21,4 +21,3 @@ export const databaseProviders = [
     },
   },
 ];
-// mysql://b12c3aad2ef1b6:53fb57e1@us-cdbr-east-06.cleardb.net/heroku_71be42810eed0f1?reconnect=true
