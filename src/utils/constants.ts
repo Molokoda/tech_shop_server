@@ -1,5 +1,6 @@
 export const SEQUELIZE = 'SEQUELIZE';
 export const PRODUCTS_REPOSITORY = 'PRODUCTS_REPOSITORY';
+export const MY_SQL = 'mysql';
 export const productsConstants = {
   name: {
     min: 3,
