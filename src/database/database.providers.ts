@@ -1,4 +1,5 @@
 import { Sequelize } from 'sequelize-typescript';
+import { Admins } from 'src/admins/admins.entity';
 import { Products } from '../products/products.entity';
 import { SEQUELIZE } from '../utils/constants';
 import { MY_SQL } from '../utils/constants';
@@ -17,7 +18,7 @@ export const databaseProviders = [
             password: process.env.DB_PASSWORD,
             database: MY_SQL,
           });
-      sequelize.addModels([Products]);
+      sequelize.addModels([Products, Admins]);
       await sequelize.sync();
       return sequelize;
     },
