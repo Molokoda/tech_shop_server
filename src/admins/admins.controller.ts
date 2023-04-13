@@ -28,6 +28,7 @@ export class AdminsController {
     return this.adminsServices.refresh(refreshTokensAdmin);
   }
 
+  @UseGuards(AdminsGuard)
   @Post()
   registrate(
     @Body() registrateAdmin: RegistrateAdminDto,
