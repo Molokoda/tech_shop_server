@@ -31,6 +31,15 @@ export class ProductsService {
     }
   }
 
+  async getAll(): Promise<Products[]> {
+    try {
+      const products = await this.productsRepository.findAll();
+      return products;
+    } catch (error) {
+      checkErrorInstance(error);
+    }
+  }
+
   async create(createProduct: CreateProdutctDto): Promise<Products> {
     try {
       const product = await this.productsRepository.findOne({
