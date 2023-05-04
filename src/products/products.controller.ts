@@ -7,8 +7,11 @@ import {
   Param,
   Body,
   UseGuards,
+  UploadedFile,
+  Response,
+  UseInterceptors,
 } from '@nestjs/common';
-import { Response } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { Response as Res } from 'express';
 import { CreateProdutctDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
@@ -37,17 +40,23 @@ export class ProductsController {
 
   @UseGuards(AdminsGuard)
   @Post()
-  create(@Body() createProduct: CreateProdutctDto): Promise<Products> {
-    return this.productsService.create(createProduct);
+  @UseInterceptors(FileInterceptor('file', { dest: 'public' }))
+  create(
+    @Body() createProduct: CreateProdutctDto,
+    @UploadedFile() file: Express.Multer.File,
+  ): Promise<Products> {
+    return this.productsService.create(createProduct, file);
   }
 
   @UseGuards(AdminsGuard)
   @Put(controllerConstants.DECORATION_ID)
+  @UseInterceptors(FileInterceptor('file', { dest: 'public' }))
   update(
     @Body() updateProduct: UpdateProductDto,
     @Param(controllerConstants.PARAM_ID) id: string,
+    @UploadedFile() file: Express.Multer.File,
   ): Promise<Products> {
-    return this.productsService.update(updateProduct, id);
+    return this.productsService.update(updateProduct, id, file);
   }
 
   @UseGuards(AdminsGuard)

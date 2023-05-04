@@ -45,6 +45,7 @@ export const messages = {
       `Description min length is ${minLength}`,
     DESCRIPTION_MAX_LENGTH: (maxLength: number) =>
       `Description max length is ${maxLength}`,
+    FILENAME_REQUIRED: 'Filename is required',
   },
 
   admins: {
@@ -58,3 +59,5 @@ export const adminRoutes = {
   LOGIN: 'login',
   REFRESH: 'refresh',
 };
+
+export const TEST_SALT_OR_ROUNDS = 10;

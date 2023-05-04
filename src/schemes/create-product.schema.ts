@@ -36,4 +36,5 @@ export const createProductSchema = object().shape({
         productsConstants.descriprion.max,
       ),
     ),
+  filename: string().required(messages.products.FILENAME_REQUIRED),
 });

@@ -10,4 +10,7 @@ export class Products extends Model {
 
   @Column
   description: string;
+
+  @Column
+  filename: string;
 }
