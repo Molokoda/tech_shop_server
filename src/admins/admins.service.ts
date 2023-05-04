@@ -37,7 +37,7 @@ export class AdminsService {
     try {
       const hash = await bcrypt.hash(
         loginAdmin.password,
-        process.env.SALT_OR_ROUNDS || TEST_SALT_OR_ROUNDS,
+        Number(process.env.SALT_OR_ROUNDS || TEST_SALT_OR_ROUNDS),
       );
       const user = await this.adminRepository.findOne({
         where: { login: loginAdmin.login },
@@ -73,7 +73,7 @@ export class AdminsService {
       }
       const hash = await bcrypt.hash(
         registrateAdmin.password,
-        process.env.SALT_OR_ROUNDS || TEST_SALT_OR_ROUNDS,
+        Number(process.env.SALT_OR_ROUNDS || TEST_SALT_OR_ROUNDS),
       );
       const newAdmin = await this.adminRepository.create({
         ...registrateAdmin,
